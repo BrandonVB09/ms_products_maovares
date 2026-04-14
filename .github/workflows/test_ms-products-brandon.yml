@@ -12,7 +12,12 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    permissions:
+    environment: dev
+
+    env:  # Variables para todo el job
+      SPRING_PROFILES_ACTIVE: dev
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      MONGO_DB: ${{ vars.MONGO_DB }}
       contents: read #This is required for actions/checkout
 
     steps:
